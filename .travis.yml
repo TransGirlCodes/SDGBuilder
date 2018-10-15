@@ -24,3 +24,12 @@ before_script:
 script:
   - julia build_tarballs.jl
 
+deploy:
+    provider: releases
+    api_key: $DEPLOY_KEY
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: BenJWard/BSGBuilder
+        tags: true
