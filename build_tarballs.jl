@@ -26,7 +26,7 @@ _archs(p) = (:x86_64,)
 for p in (Linux, MacOS)
     for a in _archs(p)
         for abi in _abis(p)
-            push!(platforms, p(a, compiler_abi=CompilerABI(abi,:cxx11)))
+            push!(platforms, p(a, compiler_abi = CompilerABI(abi)))
         end
     end
 end
