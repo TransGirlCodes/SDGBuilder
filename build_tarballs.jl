@@ -5,7 +5,7 @@ version = v"0.0.1"
 
 sources = [
     "https://github.com/bioinfologics/bsg.git" =>
-    "263f8b96d8bf170fe0763ed95111cf85b80d23b1",
+    "43515f029103498219a7816344e3f53bbdca4f72",
 ]
 
 script = raw"""
