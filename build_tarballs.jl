@@ -13,7 +13,7 @@ cd $WORKSPACE/srcdir
 mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DCMAKE_FIND_ROOT_PATH=${prefix} -DJulia_PREFIX=${prefix} -DBUILD_JULIA_INTERFACE=on ../bsg
-make libbsg libbsgjl
+make bsg bsgjl
 make install
 """
 
