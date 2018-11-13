@@ -5,7 +5,7 @@ version = v"0.0.1"
 
 sources = [
     "https://github.com/bioinfologics/bsg.git" =>
-    "43515f029103498219a7816344e3f53bbdca4f72",
+    "c4c26975670fd40203b8355b65aa71df6a0a2308",
 ]
 
 script = raw"""
@@ -20,7 +20,7 @@ make install
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = Platform[]
-_abis(p) = (:gcc7,:gcc8)
+_abis(p) = (:gcc7, :gcc8)
 _archs(p) = (:x86_64,)
 
 for p in (Linux, MacOS)
