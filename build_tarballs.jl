@@ -12,7 +12,7 @@ script = raw"""
 cd $WORKSPACE/srcdir
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DCMAKE_FIND_ROOT_PATH=${prefix} ../sdg
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DCMAKE_FIND_ROOT_PATH=${prefix} ../sdg
 make
 make install
 """
