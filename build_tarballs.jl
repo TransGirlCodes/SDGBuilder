@@ -4,7 +4,7 @@ name = "SDG"
 version = v"0.0.1"
 
 sources = [
-    "https://github.com/bioinfologics/bsg.git" =>
+    "https://github.com/bioinfologics/sdg.git" =>
     "99b23a652fcd34f10d7648493297dbdfcc83a3ce",
 ]
 
