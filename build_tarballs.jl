@@ -1,19 +1,19 @@
 using BinaryBuilder
 
-name = "bsgjl"
+name = "SDG"
 version = v"0.0.1"
 
 sources = [
     "https://github.com/bioinfologics/bsg.git" =>
-    "c4c26975670fd40203b8355b65aa71df6a0a2308",
+    "99b23a652fcd34f10d7648493297dbdfcc83a3ce",
 ]
 
 script = raw"""
 cd $WORKSPACE/srcdir
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DCMAKE_FIND_ROOT_PATH=${prefix} -DJulia_PREFIX=${prefix} -DBUILD_JULIA_INTERFACE=on ../bsg
-make bsg bsgjl
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DCMAKE_FIND_ROOT_PATH=${prefix} -DJulia_PREFIX=${prefix} ../sdg
+make
 make install
 """
 
@@ -33,16 +33,13 @@ end
 
 # The products that we will ensure are always built
 products(prefix) = [
-    LibraryProduct(prefix, "libbsg", :libbsg),
-    LibraryProduct(prefix, "libbsgjl", :libbsgjl)
+    LibraryProduct(prefix, "libsdg", :libsdg)
 ]
 
 # Dependencies that must be installed before this package can be built
 dependencies = [
     "https://github.com/staticfloat/Bzip2Builder/releases/download/v1.0.6-1/build_Bzip2.v1.0.6.jl",
-    "https://github.com/BenJWard/ZLibBuilder/releases/download/v1.2.11/build_ZLibBuilder.v1.2.11.jl",
-    "https://github.com/JuliaInterop/libcxxwrap-julia/releases/download/v0.5.1/build_libcxxwrap-julia-1.0.v0.5.1.jl",
-    "https://github.com/JuliaPackaging/JuliaBuilder/releases/download/v1.0.0-2/build_Julia.v1.0.0.jl"
+    "https://github.com/BenJWard/ZLibBuilder/releases/download/v1.2.11/build_ZLibBuilder.v1.2.11.jl"
 ]
 
 build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
