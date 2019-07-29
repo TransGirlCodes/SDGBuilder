@@ -12,24 +12,20 @@ script = raw"""
 cd $WORKSPACE/srcdir
 mkdir build
 cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DCMAKE_FIND_ROOT_PATH=${prefix} -DJulia_PREFIX=${prefix} ../sdg
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain -DCMAKE_FIND_ROOT_PATH=${prefix} ../sdg
 make
 make install
 """
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-platforms = Platform[]
-_abis(p) = (:gcc7, :gcc8)
-_archs(p) = (:x86_64,)
-
-for p in (Linux, MacOS)
-    for a in _archs(p)
-        for abi in _abis(p)
-            push!(platforms, p(a, compiler_abi = CompilerABI(abi)))
-        end
-    end
-end
+platforms = Platform[
+    Linux(:x86_64, compiler_abi = CompilerABI(:gcc7)),
+    Linux(:aarch64, compiler_abi = CompilerABI(:gcc7)),
+    Linux(:powerpc64le, compiler_abi = CompilerABI(:gcc7)),
+    MacOS(:x86_64, compiler_abi = CompilerABI(:gcc7)),
+    FreeBSD(:x86_64, compiler_abi = CompilerABI(:gcc7))
+]
 
 # The products that we will ensure are always built
 products(prefix) = [
