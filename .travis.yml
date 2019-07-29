@@ -31,5 +31,5 @@ deploy:
     file: products/*
     skip_cleanup: true
     on:
-        repo: BenJWard/BSGBuilder
+        repo: BenJWard/SDGBuilder
         tags: true
